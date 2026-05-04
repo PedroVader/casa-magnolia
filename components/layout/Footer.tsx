@@ -17,8 +17,8 @@ const legalLinks = [
 export function Footer() {
   return (
     <footer className="bg-magnolia-green text-magnolia-cream">
-      <div className="mx-auto max-w-7xl px-6 py-16 lg:px-8 lg:py-20">
-        <div className="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-4">
+      <div className="mx-auto max-w-7xl px-6 py-20 lg:px-8 lg:py-28">
+        <div className="grid grid-cols-1 gap-14 md:grid-cols-2 lg:grid-cols-4 lg:gap-16">
           {/* Brand */}
           <div className="lg:col-span-1">
             <Link href="/" className="inline-block">
@@ -37,7 +37,7 @@ export function Footer() {
 
           {/* Navigation */}
           <div>
-            <h3 className="font-body text-sm tracking-widest uppercase mb-4 opacity-50">
+            <h3 className="font-body text-xs tracking-[0.2em] uppercase mb-5 opacity-50">
               Navegar
             </h3>
             <ul className="space-y-3">
@@ -56,7 +56,7 @@ export function Footer() {
 
           {/* Contact */}
           <div>
-            <h3 className="font-body text-sm tracking-widest uppercase mb-4 opacity-50">
+            <h3 className="font-body text-xs tracking-[0.2em] uppercase mb-5 opacity-50">
               Contacto
             </h3>
             <ul className="space-y-3">
@@ -130,7 +130,7 @@ export function Footer() {
 
           {/* Legal */}
           <div>
-            <h3 className="font-body text-sm tracking-widest uppercase mb-4 opacity-50">
+            <h3 className="font-body text-xs tracking-[0.2em] uppercase mb-5 opacity-50">
               Legal
             </h3>
             <ul className="space-y-3">
@@ -149,7 +149,7 @@ export function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="mt-16 border-t border-magnolia-cream/20 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
+        <div className="mt-20 border-t border-magnolia-cream/10 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="font-body text-xs opacity-50">
             {new Date().getFullYear()} Casa Magnolia. Todos los derechos
             reservados.

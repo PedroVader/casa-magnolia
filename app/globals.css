@@ -2,13 +2,14 @@
 
 /* ─── Casa Magnolia Design Tokens ─── */
 :root {
-  --magnolia-green: #2F4A2A;
-  --magnolia-pink: #F4C9CE;
-  --magnolia-blush: #E8B6A0;
-  --magnolia-mustard: #E0A52B;
-  --magnolia-terracota: #9B3A2A;
-  --magnolia-cream: #F5EFE3;
-  --magnolia-ink: #1A1A1A;
+  --magnolia-green: #2C3E28;
+  --magnolia-pink: #E8C4C4;
+  --magnolia-blush: #D4B5A0;
+  --magnolia-mustard: #C9A96E;
+  --magnolia-terracota: #8B6356;
+  --magnolia-cream: #F7F4EF;
+  --magnolia-ink: #1C1917;
+  --magnolia-line: #D6D0C7;
 
   --background: var(--magnolia-cream);
   --foreground: var(--magnolia-ink);
@@ -24,6 +25,7 @@
   --color-magnolia-terracota: var(--magnolia-terracota);
   --color-magnolia-cream: var(--magnolia-cream);
   --color-magnolia-ink: var(--magnolia-ink);
+  --color-magnolia-line: var(--magnolia-line);
 
   --font-display: var(--font-fraunces);
   --font-body: var(--font-inter);
@@ -35,11 +37,27 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-body), system-ui, sans-serif;
+  letter-spacing: 0.01em;
 }
 
 /* ─── Typography ─── */
 h1, h2, h3, h4 {
   font-family: var(--font-display), Georgia, serif;
+  letter-spacing: -0.01em;
+}
+
+/* ─── Luxury utilities ─── */
+.separator {
+  height: 1px;
+  background: var(--magnolia-line);
+}
+
+.img-zoom {
+  transition: transform 1.2s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+.img-zoom:hover {
+  transform: scale(1.03);
 }
 
 /* ─── Focus visible for accessibility ─── */

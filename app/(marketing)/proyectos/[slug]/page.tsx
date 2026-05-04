@@ -206,7 +206,7 @@ export default async function ProyectoDetailPage({
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-end">
             {/* Title block */}
             <div className="lg:col-span-8">
-              <Badge variant="mustard">{project.category}</Badge>
+              <Badge variant="muted">{project.category}</Badge>
 
               <h1 className="font-display text-5xl md:text-7xl lg:text-8xl text-magnolia-green font-light leading-[0.9] mt-4">
                 {project.title}

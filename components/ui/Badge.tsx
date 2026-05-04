@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 
-type BadgeVariant = "green" | "pink" | "mustard" | "terracota" | "outline";
+type BadgeVariant = "green" | "muted" | "outline";
 
 interface BadgeProps {
   children: ReactNode;
@@ -10,9 +10,7 @@ interface BadgeProps {
 
 const variantStyles: Record<BadgeVariant, string> = {
   green: "bg-magnolia-green text-magnolia-cream",
-  pink: "bg-magnolia-pink text-magnolia-ink",
-  mustard: "bg-magnolia-mustard text-magnolia-ink",
-  terracota: "bg-magnolia-terracota text-magnolia-cream",
+  muted: "bg-magnolia-cream text-magnolia-ink border border-magnolia-line",
   outline: "border border-magnolia-green text-magnolia-green",
 };
 
@@ -23,7 +21,7 @@ export function Badge({
 }: BadgeProps) {
   return (
     <span
-      className={`inline-block px-3 py-1 text-xs font-body tracking-widest uppercase ${variantStyles[variant]} ${className}`}
+      className={`inline-block px-3 py-1 text-xs font-body tracking-[0.15em] uppercase ${variantStyles[variant]} ${className}`}
     >
       {children}
     </span>

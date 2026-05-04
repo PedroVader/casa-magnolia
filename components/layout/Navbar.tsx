@@ -136,7 +136,7 @@ function DesktopNavItem({
     >
       <Link
         href={link.href}
-        className={`font-body text-sm tracking-widest uppercase text-magnolia-ink/80 hover:text-magnolia-green transition-colors${
+        className={`font-body text-xs tracking-[0.2em] uppercase text-magnolia-ink/80 hover:text-magnolia-green transition-colors${
           hasDropdown ? " inline-flex items-center gap-1.5" : ""
         }`}
       >
@@ -168,7 +168,7 @@ function DesktopNavItem({
               : "opacity-0 -translate-y-1 pointer-events-none"
           }`}
         >
-          <div className="w-64 bg-magnolia-cream border border-magnolia-ink/8 shadow-lg shadow-magnolia-ink/5 py-2">
+          <div className="w-64 bg-magnolia-cream border border-magnolia-line shadow-sm py-3">
             {link.dropdown!.map((item) => (
               <Link
                 key={item.href}
@@ -287,11 +287,11 @@ export function Navbar() {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? "bg-magnolia-cream/95 backdrop-blur-sm shadow-[0_1px_0_rgba(47,74,42,0.08)]"
+          ? "bg-magnolia-cream/95 backdrop-blur-sm border-b border-magnolia-line"
           : "bg-transparent"
       }`}
     >
-      <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-8">
+      <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5 lg:px-8 lg:py-6">
         {/* Left links - desktop */}
         <ul className="hidden lg:flex items-center gap-8 flex-1">
           {leftLinks.map((link) => (
@@ -304,10 +304,10 @@ export function Navbar() {
           href="/"
           className="flex flex-col items-center flex-shrink-0 lg:mx-12"
         >
-          <span className="font-display text-2xl lg:text-3xl text-magnolia-green leading-none">
+          <span className="font-display text-2xl lg:text-[1.75rem] text-magnolia-green leading-none">
             Casa Magnolia
           </span>
-          <span className="font-accent text-xs tracking-widest text-magnolia-green/70 mt-0.5">
+          <span className="font-accent text-xs tracking-[0.2em] text-magnolia-green/60 mt-1">
             Laboratorio floral
           </span>
         </Link>

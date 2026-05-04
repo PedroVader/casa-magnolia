@@ -15,21 +15,21 @@ const variantStyles: Record<ButtonVariant, string> = {
   secondary:
     "bg-magnolia-terracota text-magnolia-cream hover:bg-magnolia-terracota/90 focus-visible:ring-magnolia-terracota",
   outline:
-    "border-2 border-magnolia-green text-magnolia-green hover:bg-magnolia-green hover:text-magnolia-cream focus-visible:ring-magnolia-green",
+    "border border-magnolia-green text-magnolia-green hover:bg-magnolia-green hover:text-magnolia-cream focus-visible:ring-magnolia-green",
   ghost:
     "text-magnolia-green hover:bg-magnolia-green/10 focus-visible:ring-magnolia-green",
 };
 
 const sizeStyles: Record<ButtonSize, string> = {
-  sm: "px-4 py-2 text-sm",
-  md: "px-6 py-3 text-base",
-  lg: "px-8 py-4 text-lg",
+  sm: "px-4 py-2",
+  md: "px-6 py-3 text-xs",
+  lg: "px-8 py-4 text-sm",
 };
 
 const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   ({ variant = "primary", size = "md", className = "", children, href, ...props }, ref) => {
     const baseStyles =
-      "inline-flex items-center justify-center font-body tracking-wide transition-colors duration-200 rounded-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none";
+      "inline-flex items-center justify-center font-body tracking-[0.15em] uppercase text-xs transition-colors duration-200 rounded-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none";
 
     const classes = `${baseStyles} ${variantStyles[variant]} ${sizeStyles[size]} ${className}`;
 
