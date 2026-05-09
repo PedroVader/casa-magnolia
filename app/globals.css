@@ -30,6 +30,7 @@
   --font-display: var(--font-fraunces);
   --font-body: var(--font-inter);
   --font-accent: var(--font-italiana);
+  --font-hand: var(--font-caveat);
 }
 
 /* ─── Base Styles ─── */
@@ -91,4 +92,24 @@ html {
 ::selection {
   background-color: var(--magnolia-pink);
   color: var(--magnolia-ink);
+}
+
+/* ─── Handcrafted utilities ─── */
+@keyframes wiggle {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(-1.5deg); }
+  75% { transform: rotate(1.5deg); }
+}
+
+.stripe-bar {
+  height: 6px;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--magnolia-green) 0px,
+    var(--magnolia-green) 8px,
+    var(--magnolia-pink) 8px,
+    var(--magnolia-pink) 16px,
+    var(--magnolia-cream) 16px,
+    var(--magnolia-cream) 24px
+  );
 }

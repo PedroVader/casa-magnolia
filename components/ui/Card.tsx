@@ -9,9 +9,7 @@ interface CardProps {
 export function Card({ children, className = "", hover = true }: CardProps) {
   return (
     <div
-      className={`group relative overflow-hidden ${
-        hover ? "transition-transform duration-300 hover:scale-[1.02]" : ""
-      } ${className}`}
+      className={`group relative overflow-hidden ${className}`}
     >
       {children}
     </div>

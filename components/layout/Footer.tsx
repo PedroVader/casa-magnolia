@@ -1,4 +1,6 @@
 import Link from "next/link";
+import { FiMail } from "react-icons/fi";
+import { FaWhatsapp, FaInstagram } from "react-icons/fa";
 
 const navLinks = [
   { href: "/sobre-nosotras", label: "Nosotras" },
@@ -65,18 +67,7 @@ export function Footer() {
                   href="mailto:hola@casamagnolia.com"
                   className="font-body text-sm opacity-80 hover:opacity-100 transition-opacity inline-flex items-center gap-2"
                 >
-                  <svg
-                    viewBox="0 0 48 48"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="1.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="h-4 w-4"
-                  >
-                    <path d="M6 12c0-1 .8-2 2-2h32c1.2 0 2 1 2 2v24c0 1-.8 2-2 2H8c-1.2 0-2-1-2-2V12z" />
-                    <path d="M6 12l17.5 13c.3.2.7.2 1 0L42 12" />
-                  </svg>
+                  <FiMail className="h-4 w-4" />
                   hola@casamagnolia.com
                 </a>
               </li>
@@ -87,18 +78,7 @@ export function Footer() {
                   rel="noopener noreferrer"
                   className="font-body text-sm opacity-80 hover:opacity-100 transition-opacity inline-flex items-center gap-2"
                 >
-                  <svg
-                    viewBox="0 0 48 48"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="1.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="h-4 w-4"
-                  >
-                    <path d="M14 36l-4 6 7-3c2 1 4.5 1.5 7 1.5 9.4 0 17-7 17-15.5S33.4 9.5 24 9.5 7 16.5 7 25c0 3.2 1.2 6.2 3.2 8.7L14 36z" />
-                    <path d="M19 21c.5-1 1.5-1 2 0l1 2c.4.8 0 1.5-.5 2l-1 .5c0 0 1 3 4 4.5l.5-1c.5-.5 1.2-.9 2-.5l2 1c1 .5 1 1.5 0 2-1.5 1-3 1.5-5 .5-3-1.5-6-5-7-8-.5-2 .5-3.5 2-3z" />
-                  </svg>
+                  <FaWhatsapp className="h-4 w-4" />
                   WhatsApp
                 </a>
               </li>
@@ -109,19 +89,7 @@ export function Footer() {
                   rel="noopener noreferrer"
                   className="font-body text-sm opacity-80 hover:opacity-100 transition-opacity inline-flex items-center gap-2"
                 >
-                  <svg
-                    viewBox="0 0 48 48"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="1.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="h-4 w-4"
-                  >
-                    <rect x="8" y="8" width="32" height="32" rx="8" />
-                    <circle cx="24" cy="24" r="8.5" />
-                    <circle cx="35" cy="13" r="1.5" fill="currentColor" stroke="none" />
-                  </svg>
+                  <FaInstagram className="h-4 w-4" />
                   Instagram
                 </a>
               </li>

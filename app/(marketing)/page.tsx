@@ -2,7 +2,6 @@ import {
   HeroHome,
   ProjectsGrid,
   ServicesStrip,
-  UpcomingWorkshops,
   AboutPreview,
   CtaFinal,
 } from "@/components/home";
@@ -13,7 +12,6 @@ export default function HomePage() {
       <HeroHome />
       <ProjectsGrid />
       <ServicesStrip />
-      <UpcomingWorkshops />
       <AboutPreview />
       <CtaFinal />
     </>

@@ -8,7 +8,6 @@ import Link from "next/link";
 interface DropdownItem {
   href: string;
   label: string;
-  description?: string;
 }
 
 interface NavLink {
@@ -17,88 +16,36 @@ interface NavLink {
   dropdown?: DropdownItem[];
 }
 
-const leftLinks: NavLink[] = [
+const navLinks: NavLink[] = [
   { href: "/", label: "Inicio" },
   { href: "/sobre-nosotras", label: "Nosotras" },
   {
     href: "/proyectos",
     label: "Proyectos",
     dropdown: [
-      {
-        href: "/proyectos",
-        label: "Todos los proyectos",
-        description: "Explora nuestro portfolio completo",
-      },
-      {
-        href: "/proyectos?cat=bodas",
-        label: "Bodas",
-        description: "Ceremonias y banquetes",
-      },
-      {
-        href: "/proyectos?cat=eventos",
-        label: "Eventos",
-        description: "Corporativos y celebraciones",
-      },
-      {
-        href: "/proyectos?cat=rodajes",
-        label: "Rodajes",
-        description: "Publicidad y editoriales",
-      },
+      { href: "/proyectos", label: "Todos los proyectos" },
+      { href: "/proyectos?cat=bodas", label: "Bodas" },
+      { href: "/proyectos?cat=eventos", label: "Eventos" },
+      { href: "/proyectos?cat=rodajes", label: "Rodajes" },
     ],
   },
-];
-
-const rightLinks: NavLink[] = [
   {
     href: "/servicios",
     label: "Servicios",
     dropdown: [
-      {
-        href: "/servicios",
-        label: "Todos los servicios",
-        description: "Lo que hacemos",
-      },
-      {
-        href: "/servicios/bodas",
-        label: "Bodas",
-        description: "Direccion floral para tu dia",
-      },
-      {
-        href: "/servicios/eventos",
-        label: "Eventos",
-        description: "Lanzamientos, cenas, corporativos",
-      },
-      {
-        href: "/servicios/rodajes",
-        label: "Rodajes",
-        description: "Set design para producciones",
-      },
-      {
-        href: "/servicios/hoteles-restaurantes",
-        label: "Hoteles y Restaurantes",
-        description: "Suscripcion floral mensual",
-      },
+      { href: "/servicios", label: "Todos los servicios" },
+      { href: "/servicios/hoteles-restaurantes", label: "Hoteles" },
+      { href: "/servicios/rodajes", label: "Rodajes" },
+      { href: "/servicios/eventos", label: "Eventos" },
     ],
   },
   {
     href: "/talleres",
     label: "Talleres",
     dropdown: [
-      {
-        href: "/talleres",
-        label: "Todos los talleres",
-        description: "Proximas fechas y reservas",
-      },
-      {
-        href: "/talleres/arreglo-primaveral",
-        label: "Arreglo primaveral",
-        description: "Composicion de temporada",
-      },
-      {
-        href: "/talleres/ramo-silvestre",
-        label: "Ramo silvestre",
-        description: "Tecnica de ramo atado a mano",
-      },
+      { href: "/talleres", label: "Todos los talleres" },
+      { href: "/talleres/arreglo-primaveral", label: "Arreglo primaveral" },
+      { href: "/talleres/ramo-silvestre", label: "Ramo silvestre" },
     ],
   },
   { href: "/contacto", label: "Contacto" },
@@ -106,13 +53,7 @@ const rightLinks: NavLink[] = [
 
 /* ─── Desktop nav item ─── */
 
-function DesktopNavItem({
-  link,
-  align = "left",
-}: {
-  link: NavLink;
-  align?: "left" | "right";
-}) {
+function DesktopNavItem({ link }: { link: NavLink }) {
   const [open, setOpen] = useState(false);
   const timeout = useRef<ReturnType<typeof setTimeout>>(null);
   const hasDropdown = !!link.dropdown;
@@ -136,7 +77,7 @@ function DesktopNavItem({
     >
       <Link
         href={link.href}
-        className={`font-body text-xs tracking-[0.2em] uppercase text-magnolia-ink/80 hover:text-magnolia-green transition-colors${
+        className={`font-hand text-lg text-magnolia-ink/80 hover:text-magnolia-green transition-colors${
           hasDropdown ? " inline-flex items-center gap-1.5" : ""
         }`}
       >
@@ -160,30 +101,21 @@ function DesktopNavItem({
 
       {hasDropdown && (
         <div
-          className={`absolute top-full pt-3 ${
-            align === "right" ? "right-0" : "left-0"
-          } transition-all duration-200 ${
+          className={`absolute top-full pt-3 left-0 transition-all duration-200 ${
             open
               ? "opacity-100 translate-y-0 pointer-events-auto"
               : "opacity-0 -translate-y-1 pointer-events-none"
           }`}
         >
-          <div className="w-64 bg-magnolia-cream border border-magnolia-line shadow-sm py-3">
+          <div className="w-48 bg-magnolia-cream border border-magnolia-line shadow-sm py-2">
             {link.dropdown!.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
                 onClick={() => setOpen(false)}
-                className="block px-5 py-3 hover:bg-magnolia-green/5 transition-colors group"
+                className="block px-5 py-2.5 font-hand text-base text-magnolia-ink hover:text-magnolia-green hover:bg-magnolia-green/5 transition-colors"
               >
-                <span className="font-body text-sm text-magnolia-ink group-hover:text-magnolia-green transition-colors">
-                  {item.label}
-                </span>
-                {item.description && (
-                  <span className="block font-body text-xs text-magnolia-ink/50 mt-0.5">
-                    {item.description}
-                  </span>
-                )}
+                {item.label}
               </Link>
             ))}
           </div>
@@ -209,7 +141,7 @@ function MobileDropdown({
       <Link
         href={link.href}
         onClick={onNavigate}
-        className="font-display text-3xl text-magnolia-green hover:text-magnolia-terracota transition-colors"
+        className="font-hand text-3xl text-magnolia-green hover:text-magnolia-terracota transition-colors"
       >
         {link.label}
       </Link>
@@ -220,7 +152,7 @@ function MobileDropdown({
     <div className="flex flex-col items-center">
       <button
         onClick={() => setExpanded(!expanded)}
-        className="font-display text-3xl text-magnolia-green hover:text-magnolia-terracota transition-colors inline-flex items-center gap-2"
+        className="font-hand text-3xl text-magnolia-green hover:text-magnolia-terracota transition-colors inline-flex items-center gap-2"
       >
         {link.label}
         <svg
@@ -248,7 +180,7 @@ function MobileDropdown({
             key={item.href}
             href={item.href}
             onClick={onNavigate}
-            className="font-body text-base text-magnolia-ink/70 hover:text-magnolia-green transition-colors"
+            className="font-hand text-lg text-magnolia-ink/70 hover:text-magnolia-green transition-colors"
           >
             {item.label}
           </Link>
@@ -284,87 +216,98 @@ export function Navbar() {
   }, [mobileOpen]);
 
   return (
-    <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? "bg-magnolia-cream/95 backdrop-blur-sm border-b border-magnolia-line"
-          : "bg-transparent"
-      }`}
-    >
-      <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5 lg:px-8 lg:py-6">
-        {/* Left links - desktop */}
-        <ul className="hidden lg:flex items-center gap-8 flex-1">
-          {leftLinks.map((link) => (
-            <DesktopNavItem key={link.href} link={link} align="left" />
-          ))}
-        </ul>
+    <>
+      {/* Mobile overlay background */}
+      <div
+        className={`lg:hidden fixed inset-0 bg-magnolia-cream z-40 transition-opacity duration-300 ${
+          mobileOpen ? "opacity-100" : "opacity-0 pointer-events-none"
+        }`}
+        aria-hidden="true"
+      />
 
-        {/* Logo - center */}
-        <Link
-          href="/"
-          className="flex flex-col items-center flex-shrink-0 lg:mx-12"
-        >
-          <span className="font-display text-2xl lg:text-[1.75rem] text-magnolia-green leading-none">
-            Casa Magnolia
-          </span>
-          <span className="font-accent text-xs tracking-[0.2em] text-magnolia-green/60 mt-1">
-            Laboratorio floral
-          </span>
-        </Link>
-
-        {/* Right links - desktop */}
-        <ul className="hidden lg:flex items-center justify-end gap-8 flex-1">
-          {rightLinks.map((link) => (
-            <DesktopNavItem key={link.href} link={link} align="right" />
-          ))}
-        </ul>
-
-        {/* Mobile menu button */}
-        <button
-          onClick={() => setMobileOpen(!mobileOpen)}
-          className="lg:hidden p-2 text-magnolia-ink"
-          aria-label={mobileOpen ? "Cerrar menu" : "Abrir menu"}
-          aria-expanded={mobileOpen}
-        >
-          <svg
-            viewBox="0 0 48 48"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="1.5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            className="h-6 w-6"
+      <header
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+          mobileOpen
+            ? "bg-magnolia-cream"
+            : scrolled
+              ? "bg-magnolia-cream border-b border-magnolia-line"
+              : "bg-magnolia-cream"
+        }`}
+      >
+        <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5 lg:px-8 lg:py-6">
+          {/* Logo - left */}
+          <Link
+            href="/"
+            onClick={() => setMobileOpen(false)}
+            className="flex flex-col flex-shrink-0"
           >
-            {mobileOpen ? (
-              <>
-                <path d="M14 14l20 20" />
-                <path d="M34 14l-20 20" />
-              </>
-            ) : (
-              <>
-                <path d="M8 14h32" />
-                <path d="M8 24h32" />
-                <path d="M8 34h32" />
-              </>
-            )}
-          </svg>
-        </button>
-      </nav>
+            <span className="font-display text-2xl lg:text-[1.75rem] leading-none text-magnolia-green transition-colors duration-300">
+              Casa Magnolia
+            </span>
+            <span className="font-accent text-xs tracking-[0.2em] mt-1 text-magnolia-green/60 transition-colors duration-300">
+              Laboratorio floral
+            </span>
+          </Link>
 
-      {/* Mobile menu */}
-      {mobileOpen && (
-        <div className="lg:hidden fixed inset-0 top-0 bg-magnolia-cream z-40">
-          <div className="flex flex-col items-center justify-center h-full gap-8">
-            {[...leftLinks, ...rightLinks].map((link) => (
+          {/* All nav links - right (desktop) */}
+          <ul className="hidden lg:flex items-center gap-8">
+            {navLinks.map((link) => (
+              <DesktopNavItem key={link.href + link.label} link={link} />
+            ))}
+          </ul>
+
+          {/* Mobile menu button */}
+          <button
+            onClick={() => setMobileOpen(!mobileOpen)}
+            className="lg:hidden p-2 text-magnolia-ink transition-colors duration-300"
+            aria-label={mobileOpen ? "Cerrar menu" : "Abrir menu"}
+            aria-expanded={mobileOpen}
+          >
+            <svg
+              viewBox="0 0 48 48"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="h-6 w-6"
+            >
+              {mobileOpen ? (
+                <>
+                  <path d="M14 14l20 20" />
+                  <path d="M34 14l-20 20" />
+                </>
+              ) : (
+                <>
+                  <path d="M8 14h32" />
+                  <path d="M8 24h32" />
+                  <path d="M8 34h32" />
+                </>
+              )}
+            </svg>
+          </button>
+        </nav>
+
+        {/* Decorative stripe bar */}
+        <div className="stripe-bar" aria-hidden="true" />
+
+        {/* Mobile menu content */}
+        <div
+          className={`lg:hidden overflow-y-auto transition-all duration-300 ease-in-out ${
+            mobileOpen ? "max-h-[calc(100dvh-72px)] opacity-100" : "max-h-0 opacity-0"
+          }`}
+        >
+          <div className="flex flex-col items-center gap-6 px-6 py-8 pb-12">
+            {navLinks.map((link) => (
               <MobileDropdown
-                key={link.href}
+                key={link.href + link.label}
                 link={link}
                 onNavigate={() => setMobileOpen(false)}
               />
             ))}
           </div>
         </div>
-      )}
-    </header>
+      </header>
+    </>
   );
 }

@@ -41,6 +41,23 @@ const placeholderWorkshops: Workshop[] = [
   },
 ];
 
+const containerVariants = {
+  hidden: {},
+  visible: {
+    transition: { staggerChildren: 0.15 },
+  },
+};
+
+const cardVariants = {
+  hidden: { opacity: 0, y: 50, scale: 0.97 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: { duration: 0.6, ease: [0.25, 0.1, 0.25, 1] as const },
+  },
+};
+
 export function UpcomingWorkshops() {
   const workshops = placeholderWorkshops;
 
@@ -49,44 +66,72 @@ export function UpcomingWorkshops() {
       <div className="mx-auto max-w-7xl px-6 lg:px-8 relative">
         <div className="flex items-end justify-between mb-12 md:mb-16">
           <div>
-            <span className="font-accent text-lg italic text-magnolia-terracota/70">
-              Aprende con nosotras
-            </span>
-            <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-magnolia-green font-light mt-1">
-              Proximos talleres
-            </h2>
-          </div>
-          <Link
-            href="/talleres"
-            className="hidden md:inline-flex items-center gap-2 font-body text-xs tracking-[0.2em] uppercase text-magnolia-green hover:text-magnolia-terracota transition-colors"
-          >
-            Todos los talleres
-            <svg
-              viewBox="0 0 48 48"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="1.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              className="h-4 w-4"
+            <motion.span
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="font-accent text-lg italic text-magnolia-terracota/70"
             >
-              <path d="M8 24h30M28 14l12 10-12 10" />
-            </svg>
-          </Link>
+              Aprende con nosotras
+            </motion.span>
+            <motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7, delay: 0.1 }}
+              className="font-display text-4xl md:text-5xl lg:text-6xl text-magnolia-green font-light mt-1"
+            >
+              Proximos talleres
+            </motion.h2>
+          </div>
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
+            <Link
+              href="/talleres"
+              className="hidden md:inline-flex items-center gap-2 font-hand text-lg text-magnolia-green hover:text-magnolia-terracota transition-colors"
+            >
+              Todos los talleres
+              <svg
+                viewBox="0 0 48 48"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="h-4 w-4"
+              >
+                <path d="M8 24h30M28 14l12 10-12 10" />
+              </svg>
+            </Link>
+          </motion.div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-60px" }}
+          className="grid grid-cols-1 md:grid-cols-3 gap-6"
+        >
           {workshops.map((workshop, index) => (
             <motion.div
               key={workshop.slug}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-80px" }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
+              variants={cardVariants}
+              whileHover={{
+                y: -8,
+                rotate: index % 2 === 0 ? -1.5 : 1.5,
+                boxShadow: "0 16px 32px rgba(44, 62, 40, 0.12)",
+                transition: { type: "spring", stiffness: 300, damping: 20 },
+              }}
             >
               <Link
                 href={`/talleres/${workshop.slug}`}
-                className="group block bg-white border border-magnolia-line overflow-hidden transition-colors duration-300 hover:border-magnolia-green"
+                className="group block bg-white border border-magnolia-line overflow-hidden"
               >
                 {/* Workshop image */}
                 <div className="aspect-[3/2] relative overflow-hidden">
@@ -135,7 +180,7 @@ export function UpcomingWorkshops() {
                     <span className="font-display text-2xl text-magnolia-green">
                       {workshop.price}&euro;
                     </span>
-                    <span className="font-body text-xs tracking-[0.2em] uppercase text-magnolia-green/50 group-hover:text-magnolia-green transition-colors">
+                    <span className="font-hand text-lg text-magnolia-green/50 group-hover:text-magnolia-green transition-colors">
                       Reservar
                     </span>
                   </div>
@@ -143,7 +188,7 @@ export function UpcomingWorkshops() {
               </Link>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );
