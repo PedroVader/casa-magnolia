@@ -239,6 +239,7 @@ export function ProjectsGrid() {
                 className="group block"
               >
                 {/* Clipped image with wobbly hand-drawn shape */}
+                <div className="relative" style={{ filter: "drop-shadow(0 6px 16px rgba(0,0,0,0.25))" }}>
                 <div
                   className={`relative aspect-square ${project.bg} overflow-hidden`}
                   style={{ clipPath: `url(#wobbly-clip-${index})` }}
@@ -262,6 +263,7 @@ export function ProjectsGrid() {
                   <span className="absolute top-3 right-4 text-white/70">
                     <Doodle index={index} />
                   </span>
+                </div>
                 </div>
 
                 {/* Info below card */}

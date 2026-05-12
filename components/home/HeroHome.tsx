@@ -6,13 +6,13 @@ import { Button } from "@/components/ui";
 export function HeroHome() {
   return (
     <section className="relative h-screen min-h-[600px] flex items-center justify-center overflow-hidden">
-      {/* Striped pattern background - tiled */}
+      {/* Striped pattern background */}
       <div
         className="absolute inset-0"
         style={{
           backgroundImage: "url(/images/pattern-stripes.png)",
-          backgroundRepeat: "no-repeat",
-          backgroundSize: "cover",
+          backgroundSize: "33.33% 100%",
+          backgroundRepeat: "repeat-x",
           backgroundPosition: "center",
         }}
       />

@@ -7,13 +7,13 @@ import { motion } from "framer-motion";
 export function AboutPreview() {
   return (
     <section id="nosotras" className="relative py-28 md:py-36 overflow-hidden">
-      {/* Striped background — same as hero */}
+      {/* Striped background */}
       <div
         className="absolute inset-0"
         style={{
           backgroundImage: "url(/images/pattern-stripes.png)",
-          backgroundRepeat: "no-repeat",
-          backgroundSize: "cover",
+          backgroundSize: "33.33% 100%",
+          backgroundRepeat: "repeat-x",
           backgroundPosition: "center",
         }}
       />
