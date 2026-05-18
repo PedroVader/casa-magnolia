@@ -288,8 +288,18 @@ export function Navbar() {
           </button>
         </nav>
 
-        {/* Decorative stripe bar */}
-        <div className="stripe-bar" aria-hidden="true" />
+
+        {/* Decorative stripe bar — same pattern as hero */}
+        <div
+          className="h-5 md:h-6"
+          style={{
+            backgroundImage: "url(/images/pattern-stripes.png)",
+            backgroundSize: "33.33% auto",
+            backgroundRepeat: "repeat-x",
+            backgroundPosition: "center bottom",
+          }}
+          aria-hidden="true"
+        />
 
         {/* Mobile menu content */}
         <div

@@ -102,14 +102,36 @@ html {
 }
 
 .stripe-bar {
-  height: 6px;
+  height: 10px;
+  background-image: url(/images/pattern-stripes.png);
+  background-size: 33.33% 100%;
+  background-repeat: repeat-x;
+  background-position: center;
+}
+
+.cenefa {
+  position: relative;
+  z-index: 10;
+  margin-bottom: -8px;
+  margin-top: -8px;
+  height: 32px;
   background: repeating-linear-gradient(
     90deg,
-    var(--magnolia-green) 0px,
-    var(--magnolia-green) 8px,
-    var(--magnolia-pink) 8px,
-    var(--magnolia-pink) 16px,
-    var(--magnolia-cream) 16px,
-    var(--magnolia-cream) 24px
+    #E8DDD0 0px,
+    #E8DDD0 20px,
+    #B8C4BE 20px,
+    #B8C4BE 40px
   );
+  -webkit-mask-image:
+    linear-gradient(black, black),
+    conic-gradient(from -45deg at 50% 0, black 25%, transparent 25%);
+  -webkit-mask-size: 100% 24px, 16px 8px;
+  -webkit-mask-position: top, bottom;
+  -webkit-mask-repeat: no-repeat, repeat-x;
+  mask-image:
+    linear-gradient(black, black),
+    conic-gradient(from -45deg at 50% 0, black 25%, transparent 25%);
+  mask-size: 100% 24px, 16px 8px;
+  mask-position: top, bottom;
+  mask-repeat: no-repeat, repeat-x;
 }

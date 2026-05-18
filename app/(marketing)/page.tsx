@@ -3,7 +3,6 @@ import {
   ProjectsGrid,
   ServicesStrip,
   AboutPreview,
-  CtaFinal,
 } from "@/components/home";
 
 export default function HomePage() {
@@ -13,7 +12,6 @@ export default function HomePage() {
       <ProjectsGrid />
       <ServicesStrip />
       <AboutPreview />
-      <CtaFinal />
     </>
   );
 }

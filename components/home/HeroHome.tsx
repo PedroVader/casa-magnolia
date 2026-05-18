@@ -13,7 +13,7 @@ export function HeroHome() {
           backgroundImage: "url(/images/pattern-stripes.png)",
           backgroundSize: "33.33% 100%",
           backgroundRepeat: "repeat-x",
-          backgroundPosition: "center",
+          backgroundPosition: "center top",
         }}
       />
 
