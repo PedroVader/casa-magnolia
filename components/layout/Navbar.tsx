@@ -77,7 +77,7 @@ function DesktopNavItem({ link }: { link: NavLink }) {
     >
       <Link
         href={link.href}
-        className={`font-hand text-lg text-magnolia-ink/80 hover:text-magnolia-green transition-colors${
+        className={`font-hand text-lg text-magnolia-ink/80 hover:text-magnolia-green transition-colors relative after:absolute after:bottom-0 after:left-0 after:h-px after:w-0 after:bg-magnolia-green hover:after:w-full after:transition-all after:duration-300${
           hasDropdown ? " inline-flex items-center gap-1.5" : ""
         }`}
       >
